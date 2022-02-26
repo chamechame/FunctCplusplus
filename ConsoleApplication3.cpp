@@ -6,31 +6,48 @@ template <typename T1>
 void max1(T1 mas1[], int const sz) {
 	T1 max = 0;
 	for (int i = 0; i < sz; i++)
-	{
 		cout << "  " << mas1[i];
 		if (mas1[i] > max)
-		{
 			max = mas1[i];
-		}
-	}
+
+	
 	cout << " Макс элемент в одномерном массиве : " << max << endl;
 }
 
 template <typename T1>
-void max2(T1 mas2[][4], int sz) { //тут не могу понять как передать двумерный массив
-	T1 max2 = 0;
+void max2(T1 mas2[4] [4], int sz) {
+	T1 max = 0;
+	for (int i = 0; i < sz; i++)
+		for (int j = 0; j < sz; j++)
+			if (mas2[i][j] > max)
+				max = mas2[i][j];
+				cout << " " << mas2[i][j];
+		
+	
+	cout << " макс элемент двумерного массива " << max << endl;
+}
+template <typename T1>
+void max3(T1 mas3[4][4][4], int sz) {
+	T1 max = 0;
 	for (int i = 0; i < sz; i++)
 	{
 		for (int j = 0; j < sz; j++)
 		{
-			if (mas2[i][j] > max2)
+			for (int z = 0; z < sz; z++)
 			{
-				max2 = mas2[i][j];
+				if (mas3[i][j][z] > max)
+			{
+				max = mas3[i][j][z];
 			}
+			cout << " " << mas3[i][j][z];
+			}
+
+			
 		}
 	}
-	cout << " макс элемент двумерного массива " << max2 << endl;
+	cout << " макс элемент трехмерного массива " << max << endl;
 }
+
 
 int main()
 {
@@ -50,15 +67,12 @@ int main()
 			for (int z = 0; z < sz; z++)
 			{
 				arr3[i][j][z] = rand() % 100;
-				// cout << " :m3: " << arr3[i][j][z] << " ";
 			}
-			// cout << " :m2: " << arr2[i][j] << " ";
 		}
-		//cout << " :m1: " << arr1[i] << " ";
 	}
 
-	//max1(arr1, sz);
+	max1(arr1, sz);
 	max2(arr2, sz);
-
+	max3(arr3, sz);
 
 }
